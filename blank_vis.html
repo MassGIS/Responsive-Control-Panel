@@ -31,6 +31,9 @@ div.cartodb-searchbox input.text {
 width: 345px;
 left:5px!important ;
 }
+.pac-container:after{
+    content:none !important;
+}
 	</style>
     <script>
       function main() {
@@ -40,6 +43,7 @@ left:5px!important ;
           center: [42.2, -71.9],
           zoom: 9
         });
+		     basemap.attributionControl.setPrefix('');
         // add a nice baselayer from Cartodb
         L.tileLayer('http://{s}.api.cartocdn.com/base-light/{z}/{x}/{y}.png', {
           attribution: 'CartoDB'
@@ -52,6 +56,8 @@ left:5px!important ;
 			//Adding search bar to the map
 		  var v = cdb.vis.Overlay.create('search', basemap.viz, {})
 		  v.show();
+		  //Dont show thw powered by leaflet
+		
 		  $('#basemap').append(v.render().el);
 		     //Adding placeholder to search box
 		  $('.cartodb-searchbox').find('input.text').attr('placeholder', 'Enter Location...'); 
